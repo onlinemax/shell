@@ -1,8 +1,10 @@
 import Quickshell
+import qs.bar.rightpanel
 
 Variants {
     model: Quickshell.screens
     delegate: PanelWindow {
+        id: toplevel
         required property ShellScreen modelData
         screen: modelData
         color: "transparent"
@@ -41,6 +43,12 @@ Variants {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
+        }
+        RightPanel {
+            anchor.window: toplevel
+            screenHeight: screen.height
+            screenWidth: screen.width
+            barHeight: 25
         }
     }
 }

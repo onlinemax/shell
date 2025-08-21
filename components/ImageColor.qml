@@ -13,13 +13,19 @@ Image {
         return `${inputAsset.replace(".svg", "")}_${color.replace(/#/g, "")}.svg`;
     }
     function updateSource() {
-        const command = `${Quickshell.shellDir}/programs/svg-color.sh`;
-        Quickshell.execDetached([command, inputAsset, getOutputAsset(), color, option]);
-        this.source = Utils.importGeneratedAsset(getOutputAsset());
+        commandProcess.running = true;
+    }
+    Process {
+        id: commandProcess
+        running: true
+        readonly property string commandUrl: `${Quickshell.shellDir}/programs/svg-color.sh`
+        command: [commandUrl, root.inputAsset, root.getOutputAsset(), root.color, root.option]
+        stdout: StdioCollector {
+            onStreamFinished: root.source = Utils.importGeneratedAsset(root.getOutputAsset())
+        }
     }
 
     onInputAssetChanged: updateSource()
     onColorChanged: updateSource()
     onOptionChanged: updateSource()
-    Component.onCompleted: updateSource()
 }

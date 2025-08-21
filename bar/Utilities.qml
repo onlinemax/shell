@@ -14,6 +14,11 @@ WrapperRectangle {
     rightMargin: 10
     RowLayout {
         spacing: 5
+        MouseArea {
+            anchors.fill: parent
+
+            onClicked: console.log("Clicked")
+        }
         ImageColor {
             inputAsset: {
                 if (Network.currentNetwork) {
@@ -44,9 +49,10 @@ WrapperRectangle {
             }
         }
         ImageColor {
-            color: Colors.on_surface
+            id: batteryImage
+            readonly property UPowerDevice device: UPower.displayDevice
+            color: device.state == UPowerDeviceState.Charging ? "#4DAE51" : (device.percentage < 0.15) ? Colors.on_error : Colors.on_surface
             inputAsset: {
-                const device = UPower.displayDevice;
                 switch (device.state) {
                 case UPowerDeviceState.Charging:
                     return "battery_charging.svg";
@@ -62,14 +68,15 @@ WrapperRectangle {
                 return "battery_1.svg";
             }
             option: "stroke"
+            Layout.preferredWidth: 20
+            Layout.preferredHeight: 20
+            Layout.rightMargin: -5
         }
-				Layout.preferredWidth: 15
-				Layout.preferredHeight: 15
-
         Text {
+            id: battery_text
+            readonly property UPowerDevice device: UPower.displayDevice
             color: Colors.on_surface
             text: {
-                const device = UPower.displayDevice;
                 const batteries = ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"];
                 return Math.round(device.percentage * 100);
             }
