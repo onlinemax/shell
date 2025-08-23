@@ -1,3 +1,1 @@
-import qs.bar
-
-Bar {}
+TopPanel {}

@@ -12,6 +12,7 @@ Rectangle {
     implicitWidth: text.width + padding * 4 + (logo.visible ? logo.width : 0)
     radius: 11
     color: Colors.surface
+    visible: text.text != "undefined"
 
     Connections {
         target: Hyprland
