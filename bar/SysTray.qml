@@ -12,6 +12,7 @@ WrapperRectangle {
     color: Colors.surface
     leftMargin: 10
     rightMargin: 10
+    visible: SystemTray.items.values.length != 0
     RowLayout {
         id: layout
         spacing: 5
