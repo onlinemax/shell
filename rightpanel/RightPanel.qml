@@ -1,7 +1,9 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Widgets
+import QtQuick.Effects
 import qs.utils
+import qs.components
 
 WrapperRectangle {
     id: root
@@ -18,10 +20,44 @@ WrapperRectangle {
     margin: PanelAppeareance.margin.little
 
     ColumnLayout {
-        NotificationCenter {
+        WrapperRectangle {
             Layout.fillWidth: true
-            Layout.preferredHeight: PanelAppeareance.sideSize.big
-            radius: PanelAppeareance.margin.little
+            Layout.preferredHeight: 50
+            margin: 10
+            color: Colors.surface_container
+            RowLayout {
+                spacing: 10
+                Item {
+                    Layout.fillWidth: true
+                }
+                ToggleIconButton {
+                    size: IconButton.Size.XS
+                    colorMaterial: IconButton.Color.Tonal
+                    widthMaterial: IconButton.Width.Narrow
+                    toggleIcon: ImageColor {
+                        inputAsset: "wifi_4.svg"
+                    }
+                    untoggleIcon: ImageColor {
+                        inputAsset: "nowifi.svg"
+                    }
+                }
+                ToggleIconButton {
+                    colorMaterial: IconButton.Color.Tonal
+                    widthMaterial: IconButton.Width.Narrow
+
+                    size: IconButton.Size.XS
+                    toggleIcon: ImageColor {
+                        inputAsset: "bluetooth.svg"
+                    }
+                    untoggleIcon: ImageColor {
+                        inputAsset: "bluetooth_off.svg"
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+            }
         }
         Item {
             Layout.fillHeight: true

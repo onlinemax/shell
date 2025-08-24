@@ -6,8 +6,8 @@ import qs.utils
 Image {
     id: root
     required property string inputAsset
-    required property string color
-    required property string option
+    property string color: "white"
+    property string option: "stroke"
 
     function getOutputAsset(): string {
         return `${inputAsset.replace(".svg", "")}_${color.replace(/#/g, "")}.svg`;

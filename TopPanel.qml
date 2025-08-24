@@ -33,6 +33,13 @@ Variants {
                     width: notifOverlay.width
                     height: notifOverlay.height
                     intersection: Intersection.Xor
+                },
+                Region {
+                    x: rightPanel.x
+                    y: rightPanel.y
+                    width: rightPanel.width
+                    height: rightPanel.height
+                    intersection: Intersection.Xor
                 }
             ]
         }
@@ -40,6 +47,7 @@ Variants {
             screen: modelData
         }
         RightPanel {
+            id: rightPanel
             parentHeight: topPanel.height
             parentWidth: topPanel.width
             barHeight: 25

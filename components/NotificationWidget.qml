@@ -13,6 +13,12 @@ WrapperMouseArea {
     property real thresholdBeforeDelete: 0.30
     property real thresholdSwipe: 1.0
 
+    onNotificationChanged: {
+        if (root.notification == null) {
+            // sometime this can happen
+            destroyAnimation.running = true;
+        }
+    }
     onPressed: {
         initialX = mouseX;
     }
@@ -53,9 +59,9 @@ WrapperMouseArea {
             easing.type: Easing.InOutQuad
         }
         onFinished: {
-            if (expired)
+            if (expired && root.notification)
                 root.notification.expire();
-            else
+            else if (root.notification)
                 root.notification.dismiss();
             root.destroy();
         }
@@ -88,7 +94,8 @@ WrapperMouseArea {
             easing.type: Easing.InOutQuad
         }
         onFinished: {
-            root.notification.dismiss();
+            if (root.notification)
+                root.notification.dismiss();
             root.destroy();
         }
     }

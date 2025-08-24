@@ -26,7 +26,6 @@ WrapperMouseArea {
                     return "nowifi.svg";
                 }
                 color: Colors.on_surface.toString()
-                option: "stroke"
                 Layout.preferredHeight: 15
                 Layout.preferredWidth: 15
             }
@@ -65,7 +64,6 @@ WrapperMouseArea {
                     }
                     return "battery_1.svg";
                 }
-                option: "stroke"
                 Layout.preferredWidth: 20
                 Layout.preferredHeight: 20
                 Layout.rightMargin: -5

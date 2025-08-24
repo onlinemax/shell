@@ -47,10 +47,4 @@ Rectangle {
             }
         }
     }
-
-    WheelHandler {
-        onWheel: evt => {
-            console.log("Are you scrolling");
-        }
-    }
 }
