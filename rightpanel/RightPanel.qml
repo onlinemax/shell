@@ -32,7 +32,7 @@ WrapperRectangle {
                 }
                 ToggleIconButton {
                     size: IconButton.Size.XS
-                    colorMaterial: IconButton.Color.Tonal
+                    colorMaterial: IconButton.Color.Filled
                     widthMaterial: IconButton.Width.Narrow
                     toggleIcon: ImageColor {
                         inputAsset: "wifi_4.svg"
@@ -42,7 +42,7 @@ WrapperRectangle {
                     }
                 }
                 ToggleIconButton {
-                    colorMaterial: IconButton.Color.Tonal
+                    colorMaterial: IconButton.Color.Filled
                     widthMaterial: IconButton.Width.Narrow
 
                     size: IconButton.Size.XS

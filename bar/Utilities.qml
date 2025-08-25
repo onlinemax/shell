@@ -4,7 +4,7 @@ import Quickshell.Widgets
 import Quickshell.Services.Pipewire
 import Quickshell.Services.UPower
 import qs.utils
-import qs.components
+import qs.components as Components
 
 WrapperMouseArea {
     onClicked: Opener.togglePanelRight()
@@ -17,7 +17,7 @@ WrapperMouseArea {
         rightMargin: 10
         RowLayout {
             spacing: 5
-            ImageColor {
+            Components.ImageColor {
                 inputAsset: {
                     if (Network.currentNetwork) {
                         const bars = Network.currentNetwork.bars;
@@ -30,7 +30,7 @@ WrapperMouseArea {
                 Layout.preferredWidth: 15
             }
 
-            Text {
+            Components.Text {
                 color: Colors.on_surface
                 text: {
                     const sink = Pipewire.defaultAudioSink;
@@ -45,7 +45,7 @@ WrapperMouseArea {
                     objects: [Pipewire.defaultAudioSink]
                 }
             }
-            ImageColor {
+            Components.ImageColor {
                 id: batteryImage
                 readonly property UPowerDevice device: UPower.displayDevice
                 color: device.state == UPowerDeviceState.Charging ? "#4DAE51" : (device.percentage < 0.15) ? Colors.on_error : Colors.on_surface
@@ -68,7 +68,7 @@ WrapperMouseArea {
                 Layout.preferredHeight: 20
                 Layout.rightMargin: -5
             }
-            Text {
+            Components.Text {
                 id: battery_text
                 readonly property UPowerDevice device: UPower.displayDevice
                 color: device.state == UPowerDeviceState.Charging ? "#4DAE51" : (device.percentage < 0.15) ? Colors.on_error : Colors.on_surface

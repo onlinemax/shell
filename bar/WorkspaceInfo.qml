@@ -2,15 +2,15 @@ import QtQuick
 import QtQml
 import Quickshell.Hyprland
 import qs.utils
+import qs.components as Components
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 
-Rectangle {
+Components.Rectangle {
     id: root
     readonly property real padding: 5
     implicitHeight: 22
     implicitWidth: text.width + padding * 4 + (logo.visible ? logo.width : 0)
-    radius: 11
     color: Colors.surface
     visible: text.text != "undefined"
 
@@ -78,7 +78,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
     }
 
-    Text {
+    Components.Text {
         id: text
         anchors.left: logo.visible ? logo.right : parent.left
         anchors.leftMargin: 10 / (logo.visible ? 2 : 1)

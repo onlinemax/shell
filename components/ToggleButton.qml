@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Effects
 import qs.utils
+import qs.components as Components
 
 Rectangle {
     id: root
@@ -193,7 +194,7 @@ Rectangle {
         width: sourceComponent ? root.imageWidth : 0
         height: width
     }
-    Text {
+    Components.Text {
         id: textComponent
         anchors.right: parent.right
         anchors.rightMargin: root.radius + root.extraPad

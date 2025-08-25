@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Hyprland
 import qs.utils
+import qs.components as Components
 
 Rectangle {
     id: root
@@ -15,7 +16,7 @@ Rectangle {
 
     radius: 9
     color: focused ? Colors.primary_container : urgent ? Colors.error : 'transparent'
-    Text {
+    Components.Text {
         text: root.workspaceId
         anchors.centerIn: parent
         color: root.focused ? Colors.on_primary_container : root.urgent ? Colors.on_error : Colors.on_surface

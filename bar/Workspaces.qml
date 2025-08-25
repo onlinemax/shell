@@ -1,10 +1,10 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
-import qs.components
+import qs.components as Components
 import qs.utils
 
-Rectangle {
+Components.Rectangle {
     id: root
     readonly property real padding: 10
     color: Colors.surface
@@ -39,7 +39,7 @@ Rectangle {
         anchors.centerIn: parent
         Repeater {
             model: root.getWorkspaces()
-            HyprlandWorkspaceButton {
+            Components.HyprlandWorkspaceButton {
                 required property var modelData
                 workspaceId: modelData.id
                 focused: modelData.focused

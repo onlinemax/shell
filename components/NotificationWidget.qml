@@ -4,6 +4,7 @@ import Quickshell.Services.Notifications
 import QtQuick
 import QtQuick.Layouts
 import qs.utils
+import qs.components as Components
 
 WrapperMouseArea {
     id: root
@@ -177,7 +178,7 @@ WrapperMouseArea {
                 Layout.minimumHeight: 50
                 Layout.preferredHeight: summaryText.contentHeight
                 clip: true
-                Text {
+                Components.Text {
                     id: summaryText
                     anchors.fill: parent
                     anchors.margins: 5
@@ -193,7 +194,7 @@ WrapperMouseArea {
                 Layout.columnSpan: 5
                 Layout.fillWidth: true
                 Layout.preferredHeight: bodyText.contentHeight
-                Text {
+                Components.Text {
                     id: bodyText
                     anchors.fill: parent
                     anchors.margins: 5
