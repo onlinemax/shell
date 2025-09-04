@@ -39,6 +39,7 @@ Components.Rectangle {
     readonly property int spacing: icon ? 5 : 0
     readonly property int extraPad: padding == Button.Padding.SM ? 0 : 8
     required property string label
+
     property int imageWidth: {
         switch (root.size) {
         case Button.Size.XS:

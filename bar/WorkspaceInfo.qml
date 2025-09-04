@@ -4,7 +4,6 @@ import Quickshell.Hyprland
 import qs.utils
 import qs.components as Components
 import Quickshell.Io
-import Quickshell.Services.Pipewire
 
 Components.Rectangle {
     id: root
@@ -36,15 +35,15 @@ Components.Rectangle {
     function update(window) {
         let title = "";
         let sourceImg = "";
-        if (window.class == "vesktop")
+        if ((window.class ?? "") == "vesktop")
             title = "\uf1ff" + "  " + deleteBefore(window.title, "Discord |");
-        else if (window.class == "brave-browser") {
+        else if ((window.class ?? "") == "brave-browser") {
             title = deleteAfter(window.title, "- Brave").trim();
             sourceImg = Utils.importAsset("brave.png");
-        } else if (window.class == "Alacritty" && window.title.startsWith("nvim")) {
+        } else if ((window.class ?? "") == "Alacritty" && window.title.startsWith("nvim")) {
             title = '<font color="#599735">\uf36f</font>' + "&nbsp;";
             title += deleteBefore(window.title, "nvim");
-        } else if (window.class == "Alacritty") {
+        } else if ((window.class ?? "") == "Alacritty") {
             // change max for your login name if you're on arch linux
             title = deleteBefore(window.title, "max@archlinux:");
             sourceImg = Utils.importAsset("alacritty.png");
@@ -84,9 +83,5 @@ Components.Rectangle {
         anchors.leftMargin: 10 / (logo.visible ? 2 : 1)
         anchors.verticalCenter: parent.verticalCenter
         color: Colors.on_surface
-
-        PwObjectTracker {
-            objects: [Pipewire.defaultAudioSink]
-        }
     }
 }

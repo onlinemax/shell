@@ -28,4 +28,6 @@ Image {
     onInputAssetChanged: updateSource()
     onColorChanged: updateSource()
     onOptionChanged: updateSource()
+    sourceSize.width: width
+    sourceSize.height: height
 }

@@ -1,16 +1,15 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Widgets
-import QtQuick.Effects
 import qs.utils
-import qs.components
+import qs.components as Components
 
 WrapperRectangle {
     id: root
     required property real parentHeight
     required property real parentWidth
     required property real barHeight
-    x: Opener.properties.panelRight ? parentWidth - width - PanelAppeareance.margin.medium : parentWidth
+    x: Opener.panelRight ? parentWidth - width - PanelAppeareance.margin.medium : parentWidth
     y: barHeight + PanelAppeareance.margin.medium
     implicitWidth: PanelAppeareance.sideSize.big
     implicitHeight: parentHeight - barHeight - 2 * PanelAppeareance.margin.medium
@@ -20,44 +19,36 @@ WrapperRectangle {
     margin: PanelAppeareance.margin.little
 
     ColumnLayout {
-        WrapperRectangle {
+        RowLayout {
             Layout.fillWidth: true
             Layout.preferredHeight: 50
-            margin: 10
-            color: Colors.surface_container
-            RowLayout {
-                spacing: 10
-                Item {
-                    Layout.fillWidth: true
-                }
-                ToggleIconButton {
-                    size: IconButton.Size.XS
-                    colorMaterial: IconButton.Color.Filled
-                    widthMaterial: IconButton.Width.Narrow
-                    toggleIcon: ImageColor {
-                        inputAsset: "wifi_4.svg"
-                    }
-                    untoggleIcon: ImageColor {
-                        inputAsset: "nowifi.svg"
-                    }
-                }
-                ToggleIconButton {
-                    colorMaterial: IconButton.Color.Filled
-                    widthMaterial: IconButton.Width.Narrow
-
-                    size: IconButton.Size.XS
-                    toggleIcon: ImageColor {
-                        inputAsset: "bluetooth.svg"
-                    }
-                    untoggleIcon: ImageColor {
-                        inputAsset: "bluetooth_off.svg"
-                    }
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
+            Components.Text {
+                text: "Side Panel"
+                color: Colors.on_surface
+                font.pointSize: 14
             }
+            Item {
+                Layout.fillWidth: true
+            }
+            Components.IconButton {
+                size: Components.IconButton.Size.XS
+                colorMaterial: Components.IconButton.Color.Standard
+                icon: Components.ImageColor {
+                    inputAsset: "close.svg"
+                }
+                onClicked: Opener.togglePanelRight()
+            }
+        }
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 1
+            Layout.topMargin: -15
+            color: Colors.outline
+        }
+        MediaPlayer {
+            Layout.fillWidth: true
         }
         Item {
             Layout.fillHeight: true

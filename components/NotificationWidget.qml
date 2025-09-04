@@ -34,6 +34,12 @@ WrapperMouseArea {
         accumX = 0;
         rect.opacity = 1.0;
     }
+    onClicked: {
+        if (root.notification.actions.length == 0)
+            return;
+        root.notification.actions[0].invoke();
+        destroyAnimation.running = true;
+    }
     onMouseXChanged: {
         accumX += mouseX - initialX;
         const percentageSwiped = Math.abs(Math.min(thresholdSwipe, Math.max(-thresholdSwipe, accumX / root.width)));
@@ -108,6 +114,7 @@ WrapperMouseArea {
         margin: 10
         bottomMargin: 20
         radius: 25
+        z: 100
 
         GridLayout {
             id: grid

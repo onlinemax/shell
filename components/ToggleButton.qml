@@ -62,6 +62,7 @@ Rectangle {
             return 40;
         }
     }
+
     function setToggleIconColor(color: string) {
         if (toggleIconLoader.item && toggleIconLoader.item.hasOwnProperty("color"))
             toggleIconLoader.item.color = color;

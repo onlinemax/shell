@@ -1,15 +1,30 @@
 pragma Singleton
 import Quickshell
+import Quickshell.Hyprland
 
 Singleton {
-    property PersistentProperties properties: PersistentProperties {
+    id: root
+    PersistentProperties {
+        id: properties
+        property bool panelRight: false
+        property bool entries: false
         reloadableId: "openerProperties"
-        property bool panelRight: true
-        onReloaded: {
-            console.log("We just reload");
-        }
     }
+    property alias panelRight: properties.panelRight
+    property alias entries: properties.entries
+
     function togglePanelRight() {
         properties.panelRight = !properties.panelRight;
+    }
+    function toggleEntries() {
+        properties.entries = !properties.entries;
+    }
+
+    GlobalShortcut {
+        appid: "shell"
+        name: "openentries"
+        onPressed: {
+            root.toggleEntries();
+        }
     }
 }
